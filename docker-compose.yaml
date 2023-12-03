@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+ apache1:
+  build: ./apache1
+  ports: 
+   - "8081:80"
+ apache2:
+  build: ./apache2
+  ports: 
+   - "8082:80"
+ apache3:
+  build: ./apache3
+  ports: 
+   - "8083:80"
+ apache4:
+  build: ./apache4
+  ports: 
+   - "8084:80"
+ apache5:
+  build: ./apache5
+  ports: 
+   - "8085:80"
+ nginx:
+  build: ./nginx
+  ports: 
+   - "80:80"
+  depends_on:
+    - apache1
+    - apache2
+    - apache3
+    - apache4
+    - apache5
+
+# networks:
+#  4lab:
+  # driver: bridge
